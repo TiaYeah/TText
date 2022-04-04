@@ -1,0 +1,5 @@
+﻿  Source.cpp
+D:\Git progs\TText\TText\Source.cpp(9,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  TText.cpp
+  Создание кода...
+  TText.vcxproj -> D:\Git progs\TText\Debug\TText.exe

@@ -15,6 +15,7 @@ void main()
 	text.setFirst(text.readRec(ifs));
 	text.reset();
 	text.insDownLine((char*)"First.First");
+	text.insDownLine((char*)"First.First.First");
 
 
 

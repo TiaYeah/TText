@@ -144,22 +144,28 @@ public:
 		pFirst = readRec(ifs);
 	}
 
-	void printRec(TNode* p)
+	void printRec(TNode* p , int tab)
 	{
 		if (p) {
 			cout << p->str << endl;
 			if (p->pDown) {
 				cout << '{' << endl;
-				printRec(p->pDown);
+				tab++;
+				for (int i = 0; i < tab; i++)
+				{
+					cout << "  ";
+				}
+				printRec(p->pDown, tab);
+				tab--;
 				cout << '}' << endl;
 			}
-			printRec(p->pNext);
+			printRec(p->pNext, tab);
 		}
 	}
 
 	void print()
 	{
-		printRec(pFirst);
+		printRec(pFirst, 0);
 	}
 
 	void reset()

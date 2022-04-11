@@ -1,4 +1,4 @@
-#include "TNode.h"
+#include "TMem.h"
 #include "TStack.h"
 #include <iostream>
 #include <fstream>
@@ -35,7 +35,7 @@ public:
 		if (pCurr)
 		{
 			st.Push(pCurr);
-			pCurr = pCurr->pNext;
+			pCurr = pCurr->pDown;
 		}
 	}
 
@@ -149,17 +149,31 @@ public:
 		if (p) {
 			cout << p->str << endl;
 			if (p->pDown) {
-				cout << '{' << endl;
 				tab++;
+				for (int i = 0; i < tab - 1; i++)
+				{
+					cout << "  ";
+				}
+				cout << '{' << endl;
 				for (int i = 0; i < tab; i++)
 				{
 					cout << "  ";
 				}
 				printRec(p->pDown, tab);
-				tab--;
+				for (int i = 0; i < tab - 1; i++)
+				{
+					cout << "  ";
+				}
 				cout << '}' << endl;
+				tab--;
 			}
-			printRec(p->pNext, tab);
+			if (p->pNext) {
+				for (int i = 0; i < tab; i++)
+				{
+					cout << "  ";
+				}
+				printRec(p->pNext, tab);
+			}
 		}
 	}
 
@@ -195,6 +209,10 @@ public:
 	bool isEnd()
 	{
 		return (st.IsEmpty());
+	}
+
+	void setFlag() {
+		pCurr->flag = true;
 	}
 };
 

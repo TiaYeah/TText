@@ -1,3 +1,5 @@
 ﻿  Source.cpp
-C:\Users\temp110\source\repos\TText\TText\Source.cpp(9,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-  TText.vcxproj -> C:\Users\temp110\source\repos\TText\Debug\TText.exe
+  TText.cpp
+  Создание кода...
+Source.obj : error LNK2001: неразрешенный внешний символ "public: static struct TMem TNode::mem" (?mem@TNode@@2UTMem@@A).
+D:\Git progs\TText2\TText\Debug\TText.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

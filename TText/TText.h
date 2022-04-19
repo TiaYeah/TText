@@ -13,7 +13,8 @@ class TText
 public:
 	TText()
 	{
-		pFirst = pCurr = nullptr;
+		pFirst->mem.pFirst->initMem();
+		pCurr = pFirst;
 	}
 
 	void setFirst(TNode* _pFirst)

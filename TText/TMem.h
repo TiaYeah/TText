@@ -15,7 +15,7 @@ struct TNode {
 	TNode* pNext, * pDown;
 	static TMem mem;
 	bool flag;
-
+public:
 	TNode(char* _str = nullptr, TNode* _pNext = nullptr, TNode* _pDown = nullptr)
 	{
 		pNext = _pNext;
@@ -46,7 +46,26 @@ struct TNode {
 			mem.pFree->pNext = pLastFree;
 		}
 	}
-	static void initMem(int s = 100)
+	static void cleanMem(TText& txt)
+	{
+		TNode* p = mem.pFree;
+		while (p) {
+			p->flag = true;
+			p = p->pNext;
+		}
+		for (txt.reset(); !txt.isEnd(); txt.goNext()) {
+			txt.setFlag();
+		}
+		p = mem.pFirst;
+		while (p <= mem.pLast) {
+			if (!p->cleanMem) {
+				delete p;
+			}
+			p++;
+		}
+	}
+
+	static void initMem(int s = 30)
 	{
 		mem.pFirst = (TNode*)new char[sizeof(TNode)];
 		mem.pFree = mem.pFirst;
@@ -60,25 +79,7 @@ struct TNode {
 		}
 		mem.pLast->pNext = nullptr;
 	}
-	//static void cleanMem(TText& txt);
+	
 };
 
 
-//void TNode::cleanMem(TText& txt)
-//{
-//	TNode* p = mem.pFree;
-//	while (p) {
-//		p->flag = true;
-//		p = p->pNext;
-//	}
-//	for (txt.reset(); !txt.isEnd(); txt.goNext()) {
-//		txt.setFlag();
-//	}
-//	p = mem.pFirst;
-//	while (p <= mem.pLast) {
-//		if (!p->cleanMem) {
-//			delete p;
-//		}
-//		p++;
-//	}
-//}

@@ -9,18 +9,19 @@ using namespace std;
 
 void main()
 {
+	TNode::initMem();
 	setlocale(LC_ALL, "Russian");
 
 	TText text;
 	ifstream ifs("TestText.txt");
 
 	text.setFirst(text.readRec(ifs));
-	text.reset();/*
-	text.insDownLine((char*)"First.First");
+	text.reset();
+	text.insDownLine("First.First");
 	text.goDownLine();
-	text.insDownLine((char*)"First.First.First");
+	text.insDownLine("First.First.First");
 	text.goDownLine();
-	text.insNextLine((char*)"First.First.Second");*/
+	text.insDownLine("First.First.Second");
 
 
 

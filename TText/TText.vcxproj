@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TNode.cpp" />
     <ClCompile Include="TText.cpp" />
   </ItemGroup>
   <ItemGroup>

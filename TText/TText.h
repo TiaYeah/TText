@@ -1,21 +1,17 @@
-#include "TMem.h"
-#include "TStack.h"
+#pragma once
 #include <iostream>
 #include <fstream>
+#include "TStack.h"
+#include "TNode.h"
 
 using namespace std;
 
-#pragma once
 class TText
 {
 	TNode* pFirst, * pCurr;
 	TStack<TNode*> st;
 public:
-	TText()
-	{
-		pFirst->mem.pFirst->initMem();
-		pCurr = pFirst;
-	}
+	TText() {}
 
 	void setFirst(TNode* _pFirst)
 	{

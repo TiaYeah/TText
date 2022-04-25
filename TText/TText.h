@@ -11,7 +11,11 @@ class TText
 	TNode* pFirst, * pCurr;
 	TStack<TNode*> st;
 public:
-	TText() {}
+	TText(){}
+	TText(TNode* p) 
+	{
+		pFirst = p;
+	}
 
 	void setFirst(TNode* _pFirst)
 	{
@@ -40,6 +44,13 @@ public:
 	{
 		pCurr = pFirst;
 		st.ClearStack();
+	}
+
+	void goPrevLine()
+	{
+		if (pCurr)
+			pCurr = st.Pop();
+		else throw - 1;
 	}
 
 	void insNextLine(char* str)
@@ -179,6 +190,26 @@ public:
 		printRec(pFirst, 0);
 	}
 
+	void printFile(TNode* p, ofstream& os)
+	{
+		if (p) {
+			os << p->str << endl;
+			if (p->pDown) {
+				os << '{' << endl;
+				printFile(p->pDown, os);
+				os << '}' << endl;
+			}
+			if (p->pNext) {
+				printFile(p->pNext, os);
+			}
+		}
+	}
+
+	void printFileMain(ofstream& os)
+	{
+		printFile(pFirst, os);
+	}
+
 	void reset()
 	{
 		st.ClearStack();
@@ -210,6 +241,11 @@ public:
 
 	void setFlag() {
 		pCurr->flag = true;
+	}
+
+	TText* copy()
+	{
+		return new TText(pFirst->copyNode(pFirst));
 	}
 };
 

@@ -21,9 +21,12 @@
 
 #pragma once
 
+#include <iostream>
 #include <string>
 #include "TMem.h"
 //#include "TText.h"
+
+using namespace std;
 
 class TText;
 
@@ -100,4 +103,25 @@ public:
 		mem.pLast->pNext = nullptr;
 	}
 
+	TNode* copyNode(TNode* p)
+	{
+		TNode* pN, * pD;
+		if (p->pNext) {
+			pN = copyNode(p->pNext);
+		}
+		if (p->pDown) {
+			pD = copyNode(p->pDown);
+		}
+		TNode* res;
+		res = new TNode(p->str, pN, pD);
+		return res;
+	}
+
+	static void printFree()
+	{
+		while (mem.pFree) {
+			cout << mem.pFirst;
+			mem.pFree++;
+		}
+	}
 };

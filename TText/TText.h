@@ -188,6 +188,7 @@ public:
 	void print()
 	{
 		printRec(pFirst, 0);
+		cout << endl;
 	}
 
 	void printFile(TNode* p, ofstream& os)

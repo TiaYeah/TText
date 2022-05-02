@@ -119,9 +119,11 @@ public:
 
 	static void printFree()
 	{
-		while (mem.pFree) {
-			cout << mem.pFirst;
-			mem.pFree++;
+		TNode* p = mem.pFree;
+		while (p) {
+			if (p->str[0] != '\0')
+				cout << p->str << endl;
+			p = p->pNext;
 		}
 	}
 };

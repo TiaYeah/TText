@@ -56,12 +56,11 @@ void main()
 		ch = _getch();
 		if (ch == 0xE0) ch = _getch();
 		if (ch == ESC) break;
-		//if (ch != ENTER) ch = _getch();
+		if (ch != ENTER) ch = _getch();
 		switch (ch) {
 		case ENTER:
 			break;
 		case HOME: {
-			cout << "„уи мы дома\n";
 			text.goFirstLine(); 
 			break;
 		}

@@ -155,7 +155,10 @@ public:
 	void printRec(TNode* p , int tab)
 	{
 		if (p) {
-			cout << p->str << endl;
+			if (p == pCurr) {
+				cout << p->str << "<" << endl;
+			}
+			else { cout << p->str << endl; }
 			if (p->pDown) {
 				tab++;
 				for (int i = 0; i < tab - 1; i++)
